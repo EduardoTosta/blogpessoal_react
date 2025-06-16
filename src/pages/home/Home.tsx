@@ -1,5 +1,8 @@
 function Home() {
-
+  const usuario = {
+    nome: "Paulo",
+    idade: 21,
+  };
   return (
     <div
       style={{
@@ -17,7 +20,7 @@ function Home() {
             width: "80vw",
           }}
         >
-          <h2>Seja Bem Vindo!</h2>
+          <h2>Seja Bem Vindo {usuario.nome}!</h2>
           <p>Expresse aqui seus pensamentos e opiniões</p>
         </div>
         <div
