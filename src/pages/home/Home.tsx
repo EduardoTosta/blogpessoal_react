@@ -1,6 +1,6 @@
 function Home() {
   const usuario = {
-    nome: "Paulo",
+    nome: "Eduardo",
     idade: 21,
   };
   return (
