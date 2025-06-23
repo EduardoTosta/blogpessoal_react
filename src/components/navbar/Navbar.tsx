@@ -1,42 +1,39 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useContext } from "react";
 
 function Navbar() {
-  return (
-    <nav className="w-full flex justify-center bg-indigo-900 text-white py-4">
-      <div className="container flex justify-between items-center">
-        <Link to="/home" className="txt-2x1 font-bold">
-          Blog Pessoal
-        </Link>
+  const navigate = useNavigate();
 
-        <ul className="flex gap-6 text-lg">
-          <li>
-            <a href="#" className="hover:text-indigo-300 transition-colors">
-              Postagens
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-indigo-300 transition-colors">
-              Temas
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-indigo-300 transition-colors">
-              Cadastrar
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-indigo-300 transition-colors">
-              Perfil
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-red-400 transition-colors">
+  const { handleLogout } = useContext(AuthContext);
+
+  function logout() {
+    handleLogout();
+    alert("O usuário foi desconectado com sucesso!");
+    navigate("/");
+  }
+
+  return (
+    <>
+      <div
+        className="w-full bg-indigo-900 text-white
+                flex justify-center py-4"
+      >
+        <div className="container flex justify-between text-lg">
+          <Link to="/home" className="text-2xl font-bold">
+            {" "}
+            Blog Pessoal{" "}
+          </Link>
+
+          <div className="flex gap-4">
+            Postagens Temas Cadastrar tema Perfil
+            <Link to="" onClick={logout} className="hover-underline">
               Sair
-            </a>
-          </li>
-        </ul>
+            </Link>
+          </div>
+        </div>
       </div>
-    </nav>
+    </>
   );
 }
 
