@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
+
 function Navbar() {
   return (
     <nav className="w-full flex justify-center bg-indigo-900 text-white py-4">
       <div className="container flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Blog Pessoal</h1>
+        <Link to="/home" className="txt-2x1 font-bold">
+          Blog Pessoal
+        </Link>
 
         <ul className="flex gap-6 text-lg">
           <li>
@@ -17,7 +21,7 @@ function Navbar() {
           </li>
           <li>
             <a href="#" className="hover:text-indigo-300 transition-colors">
-              Cadastrar Tema
+              Cadastrar
             </a>
           </li>
           <li>

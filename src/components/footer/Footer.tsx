@@ -12,7 +12,7 @@ function Footer() {
         <p className="text-lg mb-2">Acesse nossas redes sociais</p>
         <div className="flex gap-4">
           <a
-            href="https://www.linkedin.com"
+            href="https://www.linkedin.com/in/eduardotosta-/"
             target="_blank"
             rel="noreferrer"
             className="hover:text-blue-400 transition-colors"
@@ -20,7 +20,7 @@ function Footer() {
             <LinkedinLogo size={40} weight="bold" />
           </a>
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/edu_tosta001"
             target="_blank"
             rel="noreferrer"
             className="hover:text-pink-500 transition-colors"
@@ -28,7 +28,7 @@ function Footer() {
             <InstagramLogo size={40} weight="bold" />
           </a>
           <a
-            href="https://www.facebook.com"
+            href="https://www.facebook.com/eduardo.tosta.180?locale=pt_BR"
             target="_blank"
             rel="noreferrer"
             className="hover:text-blue-500 transition-colors"
