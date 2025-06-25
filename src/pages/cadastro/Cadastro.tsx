@@ -10,6 +10,7 @@ function Cadastro() {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [confirmaSenha, setConfirmaSenha] = useState<string>("");
+
   const [usuario, setUsuario] = useState<Usuario>({
     id: 0,
     nome: "",
@@ -42,7 +43,7 @@ function Cadastro() {
   async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (confirmaSenha == usuario.senha && usuario.senha.length >= 8) {
+    if (confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
       setIsLoading(true);
 
       try {
@@ -60,6 +61,7 @@ function Cadastro() {
         ...usuario,
         senha: "",
       });
+      setConfirmaSenha("");
     }
 
     setIsLoading(false);
@@ -71,7 +73,7 @@ function Cadastro() {
   return (
     <>
       <div
-        className="grid grid-cols-1 lg:grid-cols-2 h-screen
+        className="grid grid-cols-1 lg:grid-cols-2 h-screen 
             place-items-center font-bold"
       >
         <div className="fundoCadastro hidden lg:block"></div>
@@ -160,7 +162,9 @@ function Cadastro() {
             </button>
             <button
               type="submit"
-              className="rounded text-white bg-indigo-400 hover:bg-indigo-900 w-1/2 py-2 flex justify-center"
+              className="rounded text-white bg-indigo-400 
+                           hover:bg-indigo-900 w-1/2 py-2
+                           flex justify-center"
             >
               {isLoading ? (
                 <RotatingLines
@@ -171,7 +175,7 @@ function Cadastro() {
                   visible={true}
                 />
               ) : (
-                "Cadastrar"
+                <span>Cadastrar</span>
               )}
             </button>
           </div>

@@ -1,7 +1,7 @@
 import type Postagem from "./Postagem";
 
 export default interface Usuario {
-  id: 0;
+  id: number;
   nome: string;
   usuario: string;
   senha: string;
