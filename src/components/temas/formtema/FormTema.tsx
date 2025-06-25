@@ -28,7 +28,6 @@ function FormTema() {
       await buscar(`/temas/${id}`, setTema, {
         headers: { Authorization: token },
       });
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: unknown) {
       if (error instanceof Error && error.message.includes("401")) {
         handleLogout();
