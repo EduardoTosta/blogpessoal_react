@@ -55,7 +55,7 @@ function DeletarTema() {
       if (error instanceof Error && error.message.includes("401")) {
         handleLogout();
       } else {
-        alert("Erro ao atualizar o tema!");
+        alert("Erro ao excluir o tema!");
         console.error(error);
       }
     }
