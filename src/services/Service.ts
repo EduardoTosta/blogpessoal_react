@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://blogpessoal-spring-ydkf.onrender.com",
+  baseURL: "https://blogpessoal-spring-sto3.onrender.com/",
 });
 
 export const cadastrarUsuario = async (
