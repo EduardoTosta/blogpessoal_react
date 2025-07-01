@@ -6,6 +6,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import { buscar } from "../../../services/Service";
 import { DNA } from "react-loader-spinner";
 import type Postagem from "../../../models/Postagem";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function ListaPostagens() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ function ListaPostagens() {
           Authorization: token,
         },
       });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       if (error.toString().includes("403")) {
         handleLogout();
@@ -31,8 +33,8 @@ function ListaPostagens() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado");
-      navigate("/");
+      ToastAlerta("Você precisa estar logado", "info");
+      navigate("login");
     }
   }, [token]);
 
