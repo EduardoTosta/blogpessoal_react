@@ -11,6 +11,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import type Usuario from "../../models/Usuario";
 import { ToastAlerta } from "../../utils/ToastAlerta";
 import { atualizar, buscar } from "../../services/Service";
+import { Eye, EyeOff } from "lucide-react"; // 👈 Ícones adicionados
 
 function AtualizarCadastro() {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ function AtualizarCadastro() {
     {} as Usuario
   );
   const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [mostrarSenha, setMostrarSenha] = useState(false); // 👈 Novo estado
 
   useEffect(() => {
     if (usuario.token === "") {
@@ -44,9 +46,9 @@ function AtualizarCadastro() {
             ...resposta,
             id: Number(id),
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            usuario: (resposta as any).usuario ?? (resposta as any).email ?? "", // converte de "email" para "usuario", se necessário
+            usuario: (resposta as any).usuario ?? (resposta as any).email ?? "",
+            senha: "",
           };
-
           setUsuarioAtualizado(usuarioConvertido);
         },
         {
@@ -61,7 +63,7 @@ function AtualizarCadastro() {
     }
   }
 
-  async function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+  function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     setUsuarioAtualizado({
       ...usuarioAtualizado,
       [e.target.name]: e.target.value,
@@ -147,28 +149,44 @@ function AtualizarCadastro() {
           />
         </div>
 
-        <div className="flex flex-col">
+        {/* Campo senha com botão de exibir/ocultar */}
+        <div className="flex flex-col relative">
           <label htmlFor="senha">Senha</label>
           <input
-            type="password"
+            type={mostrarSenha ? "text" : "password"}
             id="senha"
             name="senha"
             value={usuarioAtualizado.senha}
             onChange={atualizarEstado}
-            className="border border-gray-400 rounded p-2"
+            className="border border-gray-400 rounded p-2 pr-10"
           />
+          <button
+            type="button"
+            onClick={() => setMostrarSenha(!mostrarSenha)}
+            className="absolute right-2 top-9 text-gray-700"
+          >
+            {mostrarSenha ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
         </div>
 
-        <div className="flex flex-col">
+        {/* Campo confirmar senha com mesma lógica */}
+        <div className="flex flex-col relative">
           <label htmlFor="confirmarSenha">Confirmar Senha</label>
           <input
-            type="password"
+            type={mostrarSenha ? "text" : "password"}
             id="confirmarSenha"
             name="confirmarSenha"
             value={confirmarSenha}
             onChange={handleConfirmarSenha}
-            className="border border-gray-400 rounded p-2"
+            className="border border-gray-400 rounded p-2 pr-10"
           />
+          <button
+            type="button"
+            onClick={() => setMostrarSenha(!mostrarSenha)}
+            className="absolute right-2 top-9 text-gray-700"
+          >
+            {mostrarSenha ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
         </div>
 
         <button
