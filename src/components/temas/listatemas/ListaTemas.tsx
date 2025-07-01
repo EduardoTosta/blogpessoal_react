@@ -31,7 +31,7 @@ function ListaTemas() {
   useEffect(() => {
     if (token === "") {
       ToastAlerta("Você precisa estar logado!", "info");
-      navigate("login");
+      navigate("/login");
     }
   }, [token]);
 

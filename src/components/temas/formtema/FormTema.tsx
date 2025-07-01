@@ -41,7 +41,7 @@ function FormTema() {
   useEffect(() => {
     if (token === "") {
       ToastAlerta("Você precisa estar logado!", "info");
-      navigate("login");
+      navigate("/login");
     }
 
     if (id !== undefined) {
@@ -87,6 +87,10 @@ function FormTema() {
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
+        } else if (error.toString().includes("400")) {
+          ToastAlerta("Erro ao cadastrar o tema!", "erro");
+          console.error(error);
+          ToastAlerta("O tema precisa ter no mínimo 8 caracteres", "info");
         } else {
           ToastAlerta("Erro ao cadastrar o tema!", "erro");
           console.error(error);

@@ -4,6 +4,7 @@ import type Usuario from "../../models/Usuario";
 import { useNavigate } from "react-router-dom";
 import { cadastrarUsuario } from "../../services/Service";
 import { RotatingLines } from "react-loader-spinner";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Cadastro() {
   const navigate = useNavigate();
@@ -48,14 +49,15 @@ function Cadastro() {
 
       try {
         await cadastrarUsuario("/usuarios/cadastrar", usuario, setUsuario);
-        ToastAlerta("Usuário cadastrado com sucesso!");
+        ToastAlerta("Usuário cadastrado com sucesso!", "sucesso");
       } catch (error) {
-        ToastAlerta("Erro ao cadastrar o usuário");
+        ToastAlerta("Erro ao cadastrar o usuário", "erro");
         console.error(error);
       }
     } else {
       ToastAlerta(
-        "Dados do usuário inconsistentes! Verifique as informações do cadastro"
+        "Dados do usuário inconsistentes! Verifique as informações do cadastro",
+        "info"
       );
       setUsuario({
         ...usuario,
@@ -125,7 +127,7 @@ function Cadastro() {
             />
           </div>
           <div className="flex flex-col w-full">
-            <label htmlFor="senha">Senha</label>
+            <label htmlFor="senha">Senha - Min 8</label>
             <input
               type="password"
               id="senha"

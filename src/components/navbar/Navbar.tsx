@@ -11,7 +11,7 @@ function Navbar() {
   function logout() {
     handleLogout();
     ToastAlerta("O usuário foi desconectado com sucesso!", "info");
-    navigate("/");
+    navigate("/login");
   }
 
   let component: ReactNode;
@@ -28,7 +28,7 @@ function Navbar() {
             Blog Pessoal{" "}
           </Link>
 
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
             <Link to="/postagens" className="hover:underline">
               Postagens
             </Link>
@@ -38,11 +38,18 @@ function Navbar() {
             <Link to="/cadastrartema" className="hover:underline">
               Cadastrar tema
             </Link>
-            <Link to="/perfil" className="hover:underline">
-              Perfil
-            </Link>
             <Link to="" onClick={logout} className="hover-underline">
               Sair
+            </Link>
+            <Link
+              to="/perfil"
+              className="w-12 h-12 rounded-full overflow-hidden border-2 border-indigo-500 hover:scale-105 transition-transform duration-300"
+            >
+              <img
+                src={usuario.foto}
+                alt="Foto do usuário"
+                className="w-full h-full object-cover"
+              />
             </Link>
           </div>
         </div>
