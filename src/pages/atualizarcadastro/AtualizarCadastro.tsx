@@ -78,7 +78,6 @@ function AtualizarCadastro() {
     e.preventDefault();
 
     if (usuarioAtualizado.senha !== confirmarSenha) {
-      console.log("Objeto que vai ser enviado:", usuarioAtualizado);
       ToastAlerta("As senhas não coincidem", "erro");
       return;
     }
@@ -99,7 +98,6 @@ function AtualizarCadastro() {
       navigate("/perfil");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      console.log("Objeto que vai ser enviado:", usuarioAtualizado);
       console.error("Erro ao atualizar:", error.response?.data);
       ToastAlerta("Erro ao atualizar usuário!", "erro");
     }
